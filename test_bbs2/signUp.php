@@ -21,7 +21,7 @@ exit();
 
 <body>
     <h1>ようこそログインしてください</h1>
-    <form action="index.php" method="post"> 
+    <form action="login_confirm.php" method="post"> 
         <label for="email">email</label>
         <input type="email" name="email">email
         <label for="password">password</label>
@@ -30,7 +30,7 @@ exit();
     </form>
 
     <h1>初めての方はこちら</h1>
-    <form action="signUp.php" method="post">  
+    <form action="signUp_confirm.php" method="post">  
     <label for="email">email</label>
         <input type="email" name="email">email
         <label for="password">password</label>
@@ -52,6 +52,7 @@ if(!$email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 //パスワードの正規表現
 if(preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    
 }else{
     echo 'パスワードは半角英数字をそれぞれ1文字以上含んだ8文字以上で設定してください';
     return false;
